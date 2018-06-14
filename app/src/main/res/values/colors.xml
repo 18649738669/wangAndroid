@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7fcbed</color>
+    <color name="colorPrimaryDark">#7fcbed</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="bg_layout">@color/common_white</color>
+    <color name="bg_root">#0f000000</color>
+    <color name="bg_tip_upload_failure">#2EFDD248</color>
+    <color name="bg_popup_new_task">#70FDD248</color>
+
+    <color name="bg_divide_line">#0F000000</color>
+    <color name="bg_divide_green_line">@color/common_dark_green</color>
+    <color name="bg_add_photo">#FFF0F0F0</color>
+
+
+    <color name="base_color">#d5e7e7e7</color>
+    <color name="common_white">#ffffff</color>
+    <color name="common_light_white">#89ffffff</color>
+    <color name="common_orange">#e67743</color>
+    <color name="common_pink">#e9837f</color>
+    <color name="common_gray">#ff888888</color>
+    <color name="common_blue">#00aaef</color>
+    <color name="common_red">#ff1f1f</color>
+    <color name="common_purle">#c7a7dc</color>
+    <color name="common_purle_1">#ab69d7</color>
+    <color name="common_green">#ff35DBA3</color>
+    <color name="common_dark_green">#FF002F36</color>
+    <color name="common_yellow">#e9ce88</color>
+    <color name="common_black">#000000</color>
+    <color name="common_black_zero">#16000000</color>
+    <color name="common_zero">#00000000</color>
+
+    <color name="shadow_text">#55000000</color>
+    <color name="tips_text">#e8e8e8</color>
+    <color name="signature_text">#ffbbbbbb</color>
+    <color name="black_text">#b3666666</color>
+    <color name="gray_text">#AAAAAA</color>
+    <color name="white_text">#ffffffff</color>
+    <color name="red_text">#ffff0000</color>
+    <color name="blue_text">#7ca9c6</color>
+    <color name="navigation_text">#9FACAA</color>
+    <color name="hint_text">#C2CDCF</color>
+    <color name="dark_green_text">@color/common_dark_green</color>
+    <color name="green_text">#8A002F36</color>
+    <color name="light_green_text">#c7c7c7</color>
+    <color name="orange_text">@color/common_orange</color>
+    <color name="yellow_text">#FFF5A623</color>
+    <color name="Text_black">#383838</color>
+    <color name="TextGray">#989898</color>
+    <color name="chat_time_bg">#55c4c2c2</color>
+    <color name="chat_time">#fdfcfc</color>
+
+    <color name="btn_normal">@color/common_green</color>
+    <color name="btn_normal_3">#1F000000</color>
+    <color name="btn_selected">#e7e6e6</color>
+
+    <color name="navigation_item_press">#F7F7F7</color>
+
+    <!-- 二维码扫描 -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#B0000000</color>
+    <color name="viewfinder_frame">#90FFFFFF</color>
+    <color name="result_point_color">#C0FFFF00</color>
+    <color name="laser_color">#0F0</color>
+    <color name="corner_color">#00FF00</color>
+
+    <color name="background">#FFFFFF</color>
+    <color name="split_line">#11112233</color>
+    <color name="text1">#59B29C</color>
+    <color name="text2">#333333</color>
+
+    <color name="navpage">#FFE1E8EB</color>
+
+</resources>

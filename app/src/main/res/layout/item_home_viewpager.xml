@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/home_item_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:background="@color/common_black_zero">
+            <TextView
+                android:id="@+id/home_item_vp_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:paddingLeft="@dimen/text_small"
+                android:background="@color/common_zero"
+                android:text=" "
+                android:textColor="@color/common_white"
+                android:textSize="@dimen/text_small"/>
+            <TextView
+                android:id="@+id/home_item_vp_number"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:paddingLeft="@dimen/text_small"
+                android:paddingRight="@dimen/text_small"
+                android:background="@color/common_zero"
+                android:text=" "
+                android:textColor="@color/common_white"
+                android:textSize="@dimen/text_small"/>
+        </LinearLayout>
+    </FrameLayout>
+    <include layout="@layout/view_interval_gray" />
+</LinearLayout>
