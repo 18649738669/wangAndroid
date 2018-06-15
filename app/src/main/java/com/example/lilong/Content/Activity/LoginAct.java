@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.lilong.Content.Dialog.RegisterDialog;
+import com.example.lilong.Content.Model.DataEventBus;
 import com.example.lilong.Content.Net.LoginAPI;
 import com.example.lilong.Content.Net.RegisterAPI;
 import com.example.lilong.R;
@@ -21,6 +22,7 @@ import com.example.lilong.Tool.Utils.JSONUtils;
 import com.example.lilong.Tool.Utils.LogUtils;
 import com.example.lilong.Tool.Utils.TipUtils;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONObject;
 
 import butterknife.BindView;
@@ -152,6 +154,7 @@ public class LoginAct extends BasicAct implements RegisterAPI.RegisterAPIListene
         SPHelper.save(Builds.SP_USER,"id",id);
         SPHelper.save(Builds.SP_USER,"type",type);
         TipUtils.showTip("登陆成功");
+        EventBus.getDefault().post(new DataEventBus(0));
         finish();
     }
 

@@ -8,12 +8,16 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.webkit.WebView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.example.lilong.Content.Activity.WebViewAct;
 import com.example.lilong.Content.Model.HomeArticleListModel;
 import com.example.lilong.Content.Model.HomeBannerModel;
 import com.example.lilong.R;
@@ -95,34 +99,21 @@ public class HomeAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             homeViewPager = ((ViewPagerHolder) holder).homeViewPager;
             homeViewPagerTitle = ((ViewPagerHolder) holder).homeViewPagerTitle;
             homeViewPagerNumber = ((ViewPagerHolder) holder).homeViewPagerNumber;
-            if (pagerAdapter == null){
-                pagerAdapter = new HomeViewPagerAdapter(bannerList);
-                homeViewPager.setAdapter(pagerAdapter);
-                homeViewPager.addOnPageChangeListener(onPageChangeListener);
-                timer = new Timer();//创建Timer对象
-                //执行定时任务
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        //首先判断是否需要轮播，是的话我们才发消息
-                        if (isContinue) {
-                            mHandler.sendEmptyMessage(1);
-                        }
-                    }
-                }, 5000, 5000);//延迟5秒，每隔5秒发一次消息
-            }else {
-                if (pagerAdapter.getBannerSize() == 0){
-                    pagerAdapter.setBannerList(bannerList);
-                }
-            }
+            setBannerAdpater();
         }else if (holder instanceof ListViewHolder){
-            HomeArticleListModel.DataModel.ObjBean article = articleList.get(position - 1);
+            final HomeArticleListModel.DataModel.ObjBean article = articleList.get(position - 1);
             ((ListViewHolder) holder).homeListViewTitle.setText(article.getTitle());
             ((ListViewHolder) holder).homeListViewImage.setImageResource(R.mipmap.icon_author);
 //            Glide.with(getContext()).load(article.getLink()).into(((ListViewHolder) holder).homeListViewImage);
             ((ListViewHolder) holder).homeListViewAuthor.setText("作者：" + article.getAuthor());
             ((ListViewHolder) holder).homeListViewTime.setText("时间：" + article.getNiceDate());
             ((ListViewHolder) holder).homeListViewType.setText("分类：" + article.getType());
+            ((ListViewHolder) holder).homeLl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WebViewAct.startActivity(context,article.getTitle(),article.getLink());
+                }
+            });
         }
     }
 
@@ -143,6 +134,30 @@ public class HomeAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public void setBannerList(List<HomeBannerModel.ObjBean> bannerList){
         this.bannerList = bannerList;
+        setBannerAdpater();
+    }
+
+    public void setBannerAdpater(){
+        if (pagerAdapter == null && bannerList.size() > 0){
+            pagerAdapter = new HomeViewPagerAdapter(context,bannerList);
+            homeViewPager.setAdapter(pagerAdapter);
+            homeViewPager.addOnPageChangeListener(onPageChangeListener);
+            timer = new Timer();//创建Timer对象
+            //执行定时任务
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    //首先判断是否需要轮播，是的话我们才发消息
+                    if (isContinue) {
+                        mHandler.sendEmptyMessage(1);
+                    }
+                }
+            }, 5000, 5000);//延迟5秒，每隔5秒发一次消息
+        }else {
+            if (pagerAdapter != null && pagerAdapter.getBannerSize() == 0){
+                pagerAdapter.setBannerList(bannerList);
+            }
+        }
     }
 
     public void setArticleList(List<HomeArticleListModel.DataModel.ObjBean> articleList,boolean isRefresh){
@@ -180,6 +195,8 @@ public class HomeAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         TextView homeListViewTime;
         @BindView(R.id.home_item_lv_type)
         TextView homeListViewType;
+        @BindView(R.id.home_item_ll)
+        LinearLayout homeLl;
 
         ListViewHolder(View view){
             super(view);

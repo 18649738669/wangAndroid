@@ -26,7 +26,7 @@
 
             <RelativeLayout
                 android:id="@+id/tool_bar_btn_back"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="match_parent">
 
                 <ImageView
@@ -45,11 +45,15 @@
 
 
             <TextView
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
                 android:id="@+id/tool_bar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
+                android:lines="1"
                 android:text="Title"
+                android:ellipsize="end"
                 android:textColor="@color/white_text"
                 android:textSize="@dimen/text_toolbar_title" />
 

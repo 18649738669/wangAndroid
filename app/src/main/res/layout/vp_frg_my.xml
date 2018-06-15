@@ -2,11 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/common_white"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="240dp"
         android:gravity="center"
         android:orientation="vertical"
         android:background="@color/common_blue">
@@ -25,10 +26,31 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/my_tv_collection"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:paddingLeft="@dimen/text_mid"
+        android:layout_height="60dp"
+        android:paddingLeft="@dimen/text_huge"
         android:textSize="@dimen/text_small"
-        android:text=""/>
+        android:gravity="center_vertical"
+        android:textColor="@color/common_black"
+        android:text="@string/my_tv_collection"/>
+    <TextView
+        android:id="@+id/my_tv_about"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingLeft="@dimen/text_huge"
+        android:textSize="@dimen/text_small"
+        android:gravity="center_vertical"
+        android:textColor="@color/common_black"
+        android:text="@string/my_tv_about"/>
+    <TextView
+        android:id="@+id/my_tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingLeft="@dimen/text_huge"
+        android:textSize="@dimen/text_small"
+        android:gravity="center_vertical"
+        android:textColor="@color/common_black"
+        android:text="@string/my_tv_exit"/>
 
 </LinearLayout>

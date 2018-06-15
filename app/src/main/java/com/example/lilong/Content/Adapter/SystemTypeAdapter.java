@@ -9,9 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import com.example.lilong.Content.Activity.SystemTypeAct;
-import com.example.lilong.Content.Model.HomeBannerModel;
+import com.example.lilong.Content.Activity.SystemArticleAct;
 import com.example.lilong.Content.Model.SystemDataModel;
 import com.example.lilong.R;
 
@@ -22,29 +20,29 @@ import butterknife.ButterKnife;
 
 /**
  * Created by long on 2018/06/13.
- * 知识体系的列表适配器
+ * 知识体系的分类列表适配器
  */
 
-public class SystemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class SystemTypeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mLayoutInflater;
     private Context context;
-    private List<SystemDataModel.ObjBean> dataModelList;
+    private List<SystemDataModel.ObjBean.Children> dataModelList;
 
-    public SystemAdapter(Context context, List<SystemDataModel.ObjBean> dataModelList){
+    public SystemTypeAdapter(Context context, List<SystemDataModel.ObjBean.Children> dataModelList){
         this.context = context;
         this.mLayoutInflater = LayoutInflater.from(context);
         this.dataModelList = dataModelList;
     }
 
-    public void setDataModelList(List<SystemDataModel.ObjBean> dataModelList){
+    public void setDataModelList(List<SystemDataModel.ObjBean.Children> dataModelList){
         this.dataModelList = dataModelList;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new SystemAdapter.SystemHolder(mLayoutInflater.inflate(R.layout.item_system_list, parent, false));
+        return new SystemTypeAdapter.SystemHolder(mLayoutInflater.inflate(R.layout.item_system_list, parent, false));
     }
 
     @Override
@@ -52,17 +50,13 @@ public class SystemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         if (holder instanceof SystemHolder){
 
-            SystemDataModel.ObjBean children = dataModelList.get(position);
+            final SystemDataModel.ObjBean.Children children = dataModelList.get(position);
             ((SystemHolder) holder).systemTitle.setText(children.getName());
-            String content = "";
-            for (int i = 0; i < children.getChildren().size(); i++ ){
-                content += children.getChildren().get(i).getName() + "      ";
-            }
-            ((SystemHolder) holder).systemContent.setText(content);
+            ((SystemHolder) holder).systemContent.setVisibility(View.GONE);
             ((SystemHolder) holder).systemLl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    SystemTypeAct.startActivity(context,position);
+                    SystemArticleAct.startActivity(context,children.getId());
                 }
             });
 

@@ -4,6 +4,7 @@ package com.example.lilong.Content.Adapter;
  * Created by long on 2018/06/11.
  */
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.lilong.Content.Activity.WebViewAct;
 import com.example.lilong.Content.Model.HomeBannerModel;
 import com.example.lilong.R;
 
@@ -25,10 +27,12 @@ import static com.example.lilong.Tool.APP.App.getContext;
 public class HomeViewPagerAdapter extends PagerAdapter {
 
     private List<HomeBannerModel.ObjBean> beans;
+    private Context context;
 
     //存放viewpager图片的数组
     List<ImageView> mList = new ArrayList<ImageView>();
-    public HomeViewPagerAdapter(List<HomeBannerModel.ObjBean> bannerList){
+    public HomeViewPagerAdapter(Context context,List<HomeBannerModel.ObjBean> bannerList){
+        this.context = context;
         this.beans = bannerList;
     }
 
@@ -63,6 +67,15 @@ public class HomeViewPagerAdapter extends PagerAdapter {
             Glide.with(getContext()).load(beans.get(position).getImagePath()).into(imageView);
         }
         imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        final int finalPosition = position;
+        if (beans.size() > 0) {
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    WebViewAct.startActivity(context, beans.get(finalPosition).getTitle(), beans.get(finalPosition).getUrl());
+                }
+            });
+        }
         container.addView(imageView);
         mList.add(imageView);
         return imageView;

@@ -23,7 +23,7 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".Content.Activity.HomeAct"
-            android:label="@string/title_activity_home"
+            android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +31,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Content.Activity.WebViewAct"
+            android:label="@string/title_activity_webview"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Content.Activity.SystemTypeAct"
+            android:label="@string/title_activity_system_type"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Content.Activity.SystemArticleAct"
+            android:label="@string/title_activity_system_article"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
